@@ -1,0 +1,1 @@
+if(typeof optimost=="object"){for(var i=0;i<optimost.es.length;i++){optimost.es[i].run("low")}};

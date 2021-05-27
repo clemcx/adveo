@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+  <HEAD>
+    <TITLE>Office Depot Administration du serveur des documents en ligne</TITLE><LINK REL='stylesheet' TYPE='text/css' HREF='/globalPics/epoch_styles.css'>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><SCRIPT TYPE='text/javascript' SRC='/globalPics/epoch_classes_FR.js'></SCRIPT>    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/globalPics/bootstrap3-iso/bootstrap3-iso.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- css and js library for bootstrap datetimepicker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+    <SCRIPT TYPE='text/javascript'>
+      var bas_cal,dp_cal,ms_cal;
+
+      window.onload = function()
+      {
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate1'));
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate2'));
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate3'));
+
+        toggleVis2();
+
+        showCookieMonster = false;
+        cookieValue = getCookieForMonster('cookie_policy');
+        if (cookieValue == 'accepted') {
+            showCookieMonster = false;
+        }
+
+        if (showCookieMonster == true) {
+            cookieMonster();
+        }
+      };
+    </SCRIPT>
+<script language="javascript">
+
+var showMode = 'table-cell';
+
+if (document.all) showMode='block';
+
+function toggleVis(){
+
+   cells = document.getElementsByName('togleft');
+   mode = false? showMode : 'none';
+   for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+   cells = document.getElementsByName('tognav');
+   mode = false? showMode : 'none';
+   for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+   cells = document.getElementsByName('togright');
+   mode = true? showMode : 'none';
+   for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+    dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate1'));
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate2'));
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate3'));
+}
+
+function toggleVis2(){
+
+   cells = document.getElementsByName('togright');
+   mode = false? showMode : 'none';
+   for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+   cells = document.getElementsByName('tognav');
+   mode = true? showMode : 'none';
+   for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+   cells = document.getElementsByName('togleft');
+   mode = true? showMode : 'none';
+   for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+    dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate1'));
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate2'));
+        dp_cal = new Epoch('epoch_popup', 'popup', document.getElementById('searchStringDate3'));
+}
+
+function cookieMonster() {
+    //alert(document.documentElement.innerHTML);
+
+    var cookieMonsterHTML = '';
+    cookieMonsterHTML+='<div id=\'cookieMonsterDIV\' style=\'position:fixed;bottom:15px;right:15px;width:450px;height:auto;background:#FFF;border:solid 2px #000; padding:10px;text-align:center\'>';
+    //cookieMonsterHTML+='we haz cookies! join the dark side!<br>';
+    cookieMonsterHTML+= "Veuillez noter que nous stockons un cookie sur votre ordinateur, il s&#039;agit d&#039;un petit fichier que nous utilisons pour enregistrer votre langue pr&eacute;f&eacute;r&eacute;e et que vous avez accus&eacute; r&eacute;ception de ce message.<br/><br/>Veuillez cliquer sur le bouton ci-dessous pour accuser r&eacute;ception de ce message et ne plus l&#039;afficher.<br/><br/>";
+    cookieMonsterHTML+='<input type=\'button\' value="J&#039;accuse r&eacute;ception de la politique d&#039;utilisation du cookie" style=\'margin-top:5px;border:solid 1px #000;background-color:#DDD;padding:5px 15px;cursor:pointer\' onmouseover=\'this.style.backgroundColor="#888888"\' onmouseout=\'this.style.backgroundColor="#DDDDDD"\' onclick=\'submitToCookieMonsterWill();\'><br>';
+    cookieMonsterHTML+='</div>';
+
+    var tempElement = document.createElement('div');
+    tempElement.innerHTML = cookieMonsterHTML;
+
+    document.getElementsByTagName('body')[0].appendChild(tempElement.firstChild);
+
+}
+
+function setCookieForMonster(c_name, value, exdays) {
+   var exdate = new Date();
+   exdate.setDate(exdate.getDate() + exdays);
+
+   var c_value = escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+   document.cookie = c_name + "=" + c_value;
+}
+
+function getCookieForMonster(c_name) {
+   var c_value = document.cookie;
+   var c_start = c_value.indexOf(" " + c_name + "=");
+
+   if (c_start == -1){
+      c_start = c_value.indexOf(c_name + "=");
+   }
+
+   if (c_start == -1) {
+      c_value = null;
+
+   } else {
+      c_start = c_value.indexOf("=", c_start) + 1;
+      var c_end = c_value.indexOf(";", c_start);
+      if (c_end == -1) {
+         c_end = c_value.length;
+      }
+      c_value = unescape(c_value.substring(c_start,c_end));
+   }
+
+   return c_value;
+}
+
+function submitToCookieMonsterWill() {
+    var ajaxRequest;  // The variable that makes Ajax possible!
+
+   try{
+      // Opera 8.0+, Firefox, Safari
+      ajaxRequest = new XMLHttpRequest();
+   } catch (e){
+      // Internet Explorer Browsers
+      try{
+         ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+         try{
+            ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+         } catch (e){
+            // Something went wrong
+         }
+      }
+   }
+   // Create a function that will receive data sent from the server
+   ajaxRequest.onreadystatechange = function(){
+      if(ajaxRequest.readyState == 4){
+         if (ajaxRequest.responseText == 'done') {
+                document.getElementById('cookieMonsterDIV').style.display = 'none';
+                setCookieForMonster('cookie_policy', 'accepted', (20*365));
+            } else {
+                alert('Something has gone wrong. You may have momenteraly lost your internet connection. Please retry clicking on the button.');
+            }
+      }
+   }
+   ajaxRequest.open("GET", "https://ods.datainterconnect.com/publicGlobalScripts/acceptCookies.php?account=&odsPrefix=ofdefr", true);
+   ajaxRequest.send(null);
+}
+</script>
+</HEAD>
+  <BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0' BGCOLOR='#FFFFFF'>
+    
+    <BR>
+    <TABLE BORDER=0 CELLPADDING=2 CELLSPACING=0 BGCOLOR='#FFFFFF' WIDTH='100%'>
+      <TR>
+        <TD WIDTH='750' ALIGN='LEFT'>
+          <TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR='#FFFFFF'>
+            <TR>
+              <TD HEIGHT='10' COLSPAN='2'>&nbsp;<br /></TD>
+            </TR>
+         <TR>
+              <TD WIDTH='30' />
+           <TD ALIGN='LEFT'>
+                <A HREF='https://www.officedepot.fr' TARGET='_blank'><IMG SRC='https://ods.datainterconnect.com/offdep/pics/OD.png' HEIGHT='26' BORDER=0></A>
+              </TD>
+            </TR>
+         <TR>
+           <TD HEIGHT='25' COLSPAN='2'>&nbsp;<br /></TD>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR HEIGHT='25'>
+        <TD BACKGROUND='https://ods.datainterconnect.com/offdep/pics/MenuBackground.gif' />
+      </TR>
+      <TR HEIGHT=20>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE BORDER=0 CELLPADDING=5 CELLSPACING=0 BGCOLOR='#FFFFFF' WIDTH='100%'>
+            <TR><TD ALIGN='LEFT' VALIGN='TOP'>
+            <INPUT TYPE='HIDDEN' NAME='s_n' VALUE='app1'>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH='100%'>
+  <TR>
+    <TD>
+      <IMG SRC='../globalPics/navMenuSpacerLeft.gif'>
+    </TD>
+    <TD VALIGN='TOP' WIDTH='100%' >
+
+               <FONT FACE='Arial' SIZE=2 COLOR='#4B4B4B'>
+<table border=0 width=600><tr><td><P><font size=4 FACE='Arial' COLOR='#4B4B4B'>Bienvenue sur Office Depot facturation en ligne</font></p></td></tr><tr><td><font size=2 FACE='Arial' COLOR='#4B4B4B'>Nous sommes heureux de vous accueillir sur notre plateforme gratuite d&#039;archivage et de facturation &eacute;lectronique. <br> <br>
+       La d&eacute;monstration vous expliquera comment : <br> <br>
+    
+       1. Recevoir vos documents sous format &eacute;lectronique<br> 
+       2. R&eacute;cup&eacute;rer les copies de vos documents comptables <br>
+       3. Consulter en ligne un relev&eacute; de compte <br>
+       4. Envoyer des requ&ecirc;tes et communiquer en ligne directement avec le gestionnaire de votre compte <br> <br> <br>
+    
+       Vous pouvez vous inscrire d&egrave;s la fin du visionnage de la d&eacute;monstration ou cliquant directement  sur &quot;inscription gratuite &agrave; la facturation en ligne&quot;. <br> <br>
+    
+       Si vous vous &ecirc;tes d&eacute;j&agrave; inscrit &agrave; notre service de facturation &eacute;lectronique, vous pouvez vous connecter directement &agrave; votre compte en utilisant le lien personnalis&eacute; et s&eacute;curis&eacute; qui
+       vous a &eacute;t&eacute; envoy&eacute; par email depuis l&#039;adresse france.encours@officedepot.eu. <br>
+       Si vous ne retrouvez plus ce lien, vous pouvez nous contacter par email.&nbsp;</td></tr></table><br><table><tr><td>                  <FORM NAME='einv' ACTION='ofdefreinv.php?lang=OldFR' METHOD='POST' style='display:inline;'>
+                    <INPUT NAME='function' TYPE='HIDDEN' VALUE='VD'>
+                    <INPUT TYPE='SUBMIT' VALUE='Visionner la d&eacute;monstration'></form></td><td>
+                  <FORM NAME='einv' ACTION='ofdefreinv.php?lang=OldFR' METHOD='POST' style='display:inline;'>
+                    <INPUT NAME='function' TYPE='HIDDEN' VALUE='OF'>
+                    <INPUT TYPE='SUBMIT' VALUE='Inscription gratuite &agrave; la facturation en ligne'></form></td></tr></table><br><br>
+<FONT COLOR=white>ods.datainterconnect.com - EN<FONT></FONT>
+              </FONT>
+            </TD></TR>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR HEIGHT='150' WIDTH='100%'>
+        <TD COLSPAN=2 VALIGN='top' BACKGROUND='https://ods.datainterconnect.com/offdep/pics/bottom-background.png'>
+            <table border='0' width='100%' cellspacing='1' cellpadding='1' style='font-size:14px;'>
+            <tr>
+                <td align='left' valign='top' colspan='3' style='border-bottom:1px solid red; color:#4F4F4F;'>Pour toute question technique, ou toute question relative &agrave; votre facture et &agrave; votre paiement, appelez-nous au 0825 00 5000 (0,15 EUR HT/mn) ou contactez-nous par email &agrave; france.encours@officedepot.eu</td>
+            </tr>
+            <tr>
+                <td align='left' valign='top'>Office Depot France SAS au capital de 70 668 261,18 &euro; dont le si&egrave;ge social est situ&eacute; 126 Avenue du Poteau, 60300 Senlis, RCS de Compi&egrave;gne n&deg; 402 254 437.<br />
+Num&eacute;ro de TVA Intracommunautaire : FR00402254437.<br />
+D&eacute;claration CNIL : 1307151 </td>
+                <td align='left' valign='bottom'>IBAN : FR76 3000 4025 1100 0112 4765 368<br />
+SWIFT : BNPAFRPPXXX<br />
+Domiciliation bancaire : BNP Paribas IDF EST</td>
+                <td align='right' valign='bottom'>Aliment&eacute; par<A HREF='http://www.datainterconnect.com' TARGET='_blank'><IMG SRC='../globalPics/dilogo.png' BORDER=0 VALIGN='TOP'></A>
+                </td>
+            </tr>
+            </table>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>
